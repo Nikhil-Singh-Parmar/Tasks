@@ -1,24 +1,4 @@
-// const url = 'https://reqres.in/api/users?page=2';
-// function print(data):void{
-//   console.log(data);
-// }
-// function help1():void{
-//   fetch(url)
-//   .then(response => {
-//     if (!response.ok) {
-//       throw new Error(`HTTP error! status: ${response.status}`);
-//     }
-//     return response.json(); 
-//   })
-//   .then(data => {
-//     print(data.data);
-//   })
-//   .catch(error => {
-//     console.error('Error:', error);
-//   });
-// }
-// help1();
-type userDetail = {
+interface userDetail  {
   id : number;
   email: string;
   first_name: string;
@@ -26,30 +6,25 @@ type userDetail = {
   avatar: string;
 };
 type allUserDetails = userDetail[];
-class userAPI {
-  private baseUrl: string = 'https://reqres.in/api/users?page=2';
-
-  private showIndividualUser(url:string,name:string,email:string,id:number):void{
-  const modal = document.querySelector(".modal")!;
-  const modalImg = document.querySelector<HTMLImageElement>(".modalImg")!;
-  const userName = document.querySelector(".userName")!;
-  const userEmail = document.querySelector(".userEmail")!;
-  const userID = document.querySelector(".userID")!;
-  const close1 = document.querySelector(".close")!;
-      modalImg.src = url;
-      userName.innerHTML = `Full Name : ${name}`;
-      userEmail.innerHTML = `email : ${email}`;
-      userID.innerHTML = `ID : ${id}`;
-      modal.classList.add("appear");
-      close1.addEventListener("click", () => {
-        modal.classList.remove("appear");
-      });
-
-  }
-  public printUsers(user:allUserDetails){
+class fetchAPI {
+  public async showAllUserDetails(){
+    let data : allUserDetails ;    
+    const url = `https://reqres.in/api/users?page=2`;
+    try {
+      const resp = await fetch(url);
+      if (!resp.ok) {
+        throw new Error(`HTTP error Found, status Code: ${resp.status}`);
+      }
+       const response = await resp.json();
+       data = response.data;
+       console.log(data)
+    } catch (err) {
+      console.error('Error:', err);
+      throw err; 
+    }
     const userDataContainer = document.getElementById('images')!;
     userDataContainer.innerHTML = '';
-    user.forEach((details:userDetail)=> {
+    data.forEach((details:userDetail)=> {
       const userCard = document.createElement('div');
       userCard.classList.add('box');
       console.log(details);
@@ -58,35 +33,43 @@ class userAPI {
       <img class='img' src=${details.avatar}>`;
       userDataContainer.appendChild(userCard);
       userCard.addEventListener('click',()=>{
-        this.showIndividualUser(details.avatar,details.first_name +' '+ details.last_name,details.email,details.id);
+        this.showIndividualUser(details.id);
       });
     })
   }
-  public async getData() {
-    const url = `${this.baseUrl}/data`;
+  
+  private async showIndividualUser(id:number) :Promise<void>{
+    let userData:any;
     try {
-      const resp = await fetch(url);
+      const resp = await fetch(`https://reqres.in/api/users/${id}`);
       if (!resp.ok) {
         throw new Error(`HTTP error Found, status Code: ${resp.status}`);
       }
       const data = await resp.json();
-      return data;
+      userData = data.data;
     } catch (err) {
       console.error('Error:', err);
       throw err; 
     }
-  }
+    
+    const userDataContainer = document.getElementById('images')!;
+    const heading = document.getElementsByClassName('heading');
+    userDataContainer.innerHTML = '';
+        
+      const userCard = document.createElement('div');
+      userCard.classList.add('box');
+      userCard.innerHTML=`<p id='id'>Id : ${id}</p>
+      <p id='name'>Full Name : ${userData.first_name} ${userData.last_name}</p>
+      <p id='email'>email : ${userData.email}</p>
+      <img class='img' src=${userData.avatar}>`;
+      userDataContainer.appendChild(userCard);
+     
+    }
 }
 
+const myApi = new fetchAPI();
+myApi.showAllUserDetails();
 
-const myApi = new userAPI();
-myApi.getData()
-  .then(data => {
-    myApi.printUsers(data.data);
-  })
-  .catch(err => {
-    console.error('Error:', err);
-  });
 
 
   

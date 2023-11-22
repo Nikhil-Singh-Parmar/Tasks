@@ -34,48 +34,18 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var userAPI = /** @class */ (function () {
-    function userAPI() {
-        this.baseUrl = 'https://reqres.in/api/users?page=2';
+;
+var fetchAPI = /** @class */ (function () {
+    function fetchAPI() {
     }
-    userAPI.prototype.showIndividualUser = function (url, name, email, id) {
-        var modal = document.querySelector(".modal");
-        var modalImg = document.querySelector(".modalImg");
-        var userName = document.querySelector(".userName");
-        var userEmail = document.querySelector(".userEmail");
-        var userID = document.querySelector(".userID");
-        var close1 = document.querySelector(".close");
-        modalImg.src = url;
-        userName.innerHTML = "Full Name : ".concat(name);
-        userEmail.innerHTML = "email : ".concat(email);
-        userID.innerHTML = "ID : ".concat(id);
-        modal.classList.add("appear");
-        close1.addEventListener("click", function () {
-            modal.classList.remove("appear");
-        });
-    };
-    userAPI.prototype.printUsers = function (user) {
-        var _this = this;
-        var userDataContainer = document.getElementById('images');
-        userDataContainer.innerHTML = '';
-        user.forEach(function (details) {
-            var userCard = document.createElement('div');
-            userCard.classList.add('box');
-            console.log(details);
-            userCard.innerHTML = "<p id='name'>".concat(details.first_name, "</p>\n      <p id='email'>").concat(details.email, "</p>\n      <img class='img' src=").concat(details.avatar, ">");
-            userDataContainer.appendChild(userCard);
-            userCard.addEventListener('click', function () {
-                _this.showIndividualUser(details.avatar, details.first_name + ' ' + details.last_name, details.email, details.id);
-            });
-        });
-    };
-    userAPI.prototype.getData = function () {
+    fetchAPI.prototype.showAllUserDetails = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var url, resp, data, err_1;
+            var data, url, resp, response, err_1, userDataContainer;
+            var _this = this;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        url = "".concat(this.baseUrl, "/data");
+                        url = "https://reqres.in/api/users?page=2";
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 4, , 5]);
@@ -87,24 +57,68 @@ var userAPI = /** @class */ (function () {
                         }
                         return [4 /*yield*/, resp.json()];
                     case 3:
-                        data = _a.sent();
-                        return [2 /*return*/, data];
+                        response = _a.sent();
+                        data = response.data;
+                        console.log(data);
+                        return [3 /*break*/, 5];
                     case 4:
                         err_1 = _a.sent();
                         console.error('Error:', err_1);
                         throw err_1;
-                    case 5: return [2 /*return*/];
+                    case 5:
+                        userDataContainer = document.getElementById('images');
+                        userDataContainer.innerHTML = '';
+                        data.forEach(function (details) {
+                            var userCard = document.createElement('div');
+                            userCard.classList.add('box');
+                            console.log(details);
+                            userCard.innerHTML = "<p id='name'>".concat(details.first_name, "</p>\n      <p id='email'>").concat(details.email, "</p>\n      <img class='img' src=").concat(details.avatar, ">");
+                            userDataContainer.appendChild(userCard);
+                            userCard.addEventListener('click', function () {
+                                _this.showIndividualUser(details.id);
+                            });
+                        });
+                        return [2 /*return*/];
                 }
             });
         });
     };
-    return userAPI;
+    fetchAPI.prototype.showIndividualUser = function (id) {
+        return __awaiter(this, void 0, void 0, function () {
+            var userData, resp, data, err_2, userDataContainer, heading, userCard;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 3, , 4]);
+                        return [4 /*yield*/, fetch("https://reqres.in/api/users/".concat(id))];
+                    case 1:
+                        resp = _a.sent();
+                        if (!resp.ok) {
+                            throw new Error("HTTP error Found, status Code: ".concat(resp.status));
+                        }
+                        return [4 /*yield*/, resp.json()];
+                    case 2:
+                        data = _a.sent();
+                        userData = data.data;
+                        return [3 /*break*/, 4];
+                    case 3:
+                        err_2 = _a.sent();
+                        console.error('Error:', err_2);
+                        throw err_2;
+                    case 4:
+                        userDataContainer = document.getElementById('images');
+                        heading = document.getElementsByClassName('heading');
+                        userDataContainer.innerHTML = '';
+                        userCard = document.createElement('div');
+                        userCard.classList.add('box');
+                        userCard.innerHTML = "<p id='id'>Id : ".concat(id, "</p>\n      <p id='name'>Full Name : ").concat(userData.first_name, " ").concat(userData.last_name, "</p>\n      <p id='email'>email : ").concat(userData.email, "</p>\n      <img class='img' src=").concat(userData.avatar, ">");
+                        userDataContainer.appendChild(userCard);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    return fetchAPI;
 }());
-var myApi = new userAPI();
-myApi.getData()
-    .then(function (data) {
-    myApi.printUsers(data.data);
-})
-    .catch(function (err) {
-    console.error('Error:', err);
-});
+var myApi = new fetchAPI();
+myApi.showAllUserDetails();
