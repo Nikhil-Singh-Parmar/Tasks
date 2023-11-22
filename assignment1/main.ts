@@ -1,5 +1,7 @@
 const readlineSync = require('readline-sync');
-import {deposit,withdraw,viewBalance,viewData,newAccount} from './interface';
+import { UserAccount } from "./bank";
+
+const bank = new UserAccount();
 
 let inputValue = 0;
   while(inputValue!=6){
@@ -12,19 +14,19 @@ let inputValue = 0;
   6. Exit from Application
   `);
   if(inputValue==1){
-    newAccount();
+    bank.newAccount();
   }
   else if(inputValue==2){
-    viewBalance();
+    bank.viewAccountBalance();
   }
   else if(inputValue==3){
-    viewData();
+    bank.viewUserData();
   }
   else if(inputValue==4){
-    withdraw();
+    bank.withdrawMoney();
   }
   else if(inputValue==5){
-    deposit();
+    bank.depositMoney();
   }
   else if(inputValue!=6){
     console.log('Invalid Input please select a number between 1 to 6;');

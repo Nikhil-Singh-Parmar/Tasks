@@ -34,21 +34,60 @@ class UserAccount{
         Total Balance: ${balance1}
         Generated Account Number: ${accountNumb}`);
     }
-    public viewAccountBalance(currentAccountNumber:string):number{
-            if(this.accountNumber===currentAccountNumber){
-                return this.balance;
-            }        
-        return -1;
-    }
-    public viewUserData(currentAccountNumber:string):void{
+
+    public newAccount():void{
+        let value = readlineSync.question(`1. Savings
+      2. Current
+      Select 1 or 2`);
         let accountType:string;
-        if(currentAccountNumber[0]=='S' || currentAccountNumber[0]=='s'){
+        if(value==1){
+          accountType='savings';
+        }
+        else {
+          accountType='current';
+        }
+        console.log(`Creating a ${accountType} Account`);
+        let name = readlineSync.question('Enter Your Name: ');
+        let age = readlineSync.question('Enter Your Age: ');
+        while(age<18 || age>68){
+          console.log('Age must be between 18 to 68 years');
+          age = readlineSync.question('Enter Your Age: ');
+        }
+        let location = readlineSync.question('Enter Your Location: ');
+        let state = readlineSync.question('Enter Your State: ');
+        let country = readlineSync.question('Enter Your Country: ');
+        let balance = readlineSync.question(`Enter Initial balance for your ${accountType}: Account: `);
+        let email = readlineSync.question('Enter Your Email ID: ');
+        if(!this.validateEmail(email)){
+          console.log(`Email ID is not in standard formart
+          NOTE : One more wrong attempt and your account registration will be cancelled`);
+          email = readlineSync.question('Re-enter Your Email ID: ');
+          if(!this.validateEmail(email))return;
+            
+        }
+        this.registerUSer(name,age,location,state,country,email,balance,accountType);
+          
+      }
+
+    public viewAccountBalance():void{
+        let accountNumber = readlineSync.question(`Enter your Account Number: `);
+            if(this.accountNumber===accountNumber.toLowerCase()){        
+              console.log(`Account Balance for account number ${accountNumber} is ${this.balance}`);
+              return;
+            }        
+            console.log('Bank Account Not Found Please try again with different Bank Account: ');
+    }
+    public viewUserData():void{
+        let accountNumber = readlineSync.question(`Enter your Account Number: `);
+        accountNumber = accountNumber.toLowerCase();
+        let accountType:string;
+        if(accountNumber[0]=='s'){
           accountType="Savings"
         }
         else{
           accountType="Current"
         }
-            if(this.accountNumber==currentAccountNumber){
+            if(this.accountNumber==accountNumber){
                 console.log(`
         Account Holder Details:
         Customer Name: ${this.name}
@@ -57,14 +96,16 @@ class UserAccount{
         Email ID: ${this.email}
         Account Type: ${accountType}
         Total Balance: ${this.balance}
-        Account Number: ${currentAccountNumber}`);
+        Account Number: ${accountNumber}`);
         return;
             }
         
     }
-    public withdrawMoney(currentAccountNumber:string,amount:number):void{
-  
-            if(this.accountNumber==currentAccountNumber){
+    public withdrawMoney():void{
+        let accountNumber = readlineSync.question(`Enter your Account Number: `);
+        let amount = readlineSync.question(`Enter the Amount you want to withdraw: `);
+        accountNumber = accountNumber.toLowerCase();
+            if(this.accountNumber==accountNumber){
                 if(this.accountNumber[0]=="s"
                 ){
                     if(this.balance-amount > 500){
@@ -87,17 +128,25 @@ class UserAccount{
             }
         
     }
-    public depositMoney(currentAccountNumber:string,amount:number):void{
-        
-            if(this.accountNumber==currentAccountNumber){
+    public depositMoney():void{     
+        let accountNumber = readlineSync.question(`Enter your Account Number: `);
+        let amount = readlineSync.question(`Enter the Amount you want to Deposit: `);
+        accountNumber = accountNumber.toLowerCase();
+            if(this.accountNumber==accountNumber){
                 let val1:number=+amount;
                 let val2:number=+this.balance;
                 this.balance=val1+val2;
-                console.log(`Updated Balance of Account Number ${currentAccountNumber} is ${this.balance}`);
+                console.log(`Updated Balance of Account Number ${accountNumber} is ${this.balance}`);
                 return ;
             }
         
     }
+
+    private validateEmail (email:string) {
+        return email.match(
+          /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+      }
 }
  
 export {UserAccount};  
