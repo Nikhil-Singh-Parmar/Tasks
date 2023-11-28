@@ -1,0 +1,22 @@
+<div class="container">
+ <h1 class="main-heading">Angular ToDo list App</h1>
+    <input #myinput type="text" class="input"/>
+    <button (click)="clickDone(myinput.value)" class="add"> + Add New Task</button> 
+        <div *ngFor="let task of pendingToDo ;index as i" class="list-item">
+           <h1 class="desc">{{task}}</h1>
+           <button (click)="completeToDo(i)" class="mark-complete">Mark Completed</button>
+           <button (click) = "deletePendingToDo(i)" class="delete">
+                Delete
+           </button>
+        </div>
+
+        <h1 class="heading2"> Completed Tasks </h1>
+        <div *ngFor="let task of completedToDo ;index as i" class="list-item">
+            <h1 class="desc">
+                {{task}}
+            </h1>
+            <button (click) = "deleteCompletedToDo(i)" class="delete">
+                Delete
+            </button>
+        </div>
+</div>
