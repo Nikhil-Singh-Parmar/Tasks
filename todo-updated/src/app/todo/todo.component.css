@@ -1,0 +1,52 @@
+.main-heading{
+    text-align: center;
+    border-bottom: 2px solid black;
+    font-size: 38px;
+    padding: 15px 0px;
+}
+.container{
+    width: 710px;
+    margin-left: 25%;
+}
+.delete{
+    background-color: red;
+    /* color: white; */
+    font-size: 18px;
+    margin: 20px 15px;
+    padding: 0px 8px;
+    height: 30px;
+    float: right;
+}
+.desc{
+    font-size: 28px;
+    font-weight: 500;
+}
+.mark-complete{
+    background-color: green;
+    font-size: 18px;
+    margin: 20px 15px;
+    padding: 0px 8px;
+    height: 30px;
+}
+.heading2{
+    font-weight:bolder;
+    text-align: center;
+    font-size: 38px;
+    color: green;
+}
+.input{
+    width: 500px;
+    height: 22px;
+}
+.add{
+    background-color: rgb(20, 47, 248);
+    font-size: 20px;
+    color: white;
+    padding: 4px 6px;
+    margin: 4px 20px;
+}
+.list-item{
+    display: flex;
+    width: 710px;
+    justify-content: space-between;
+}
