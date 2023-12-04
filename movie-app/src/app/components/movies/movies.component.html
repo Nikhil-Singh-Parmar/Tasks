@@ -1,0 +1,11 @@
+<h1 class="heading">Welcome To The Movie Voting App</h1>
+
+<div class="main-container">
+    <div *ngFor =  "let movie of movies; index as i;" >
+        <img [src]="movie.poster" >
+        <button (click)="vote(i)" class="btn">
+            {{ movie.voteStatus ? 'Unvote' : 'Vote' }}
+        </button>
+        <h1 *ngIf="movie.voteStatus">VOTED !!</h1>
+    </div>
+</div>

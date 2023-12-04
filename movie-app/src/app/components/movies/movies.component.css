@@ -1,0 +1,17 @@
+.main-container{
+    display: flex;
+    justify-content: space-around;
+}
+.heading{
+    text-align: center;
+    font-size: 43px;
+    margin: 20px 0px 35px 0px;
+}
+.btn{
+    padding: 14px 18px;
+    font-size: 20px;
+    background-color: blue;
+    font-weight: 500;
+    border: none;
+    border-radius: 50%;
+}
