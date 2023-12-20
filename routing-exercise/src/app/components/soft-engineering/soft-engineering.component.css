@@ -1,0 +1,12 @@
+.item{
+    padding: 15px 0px;
+    font-size: 22px;
+    font-weight: 600;
+    color:grey;
+    text-align: center;
+}
+.head{
+    text-align: center;
+    color: blue;
+    font-size: 44px;
+}
