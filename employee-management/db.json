@@ -1,0 +1,89 @@
+{
+  "department": [
+    {
+      "name": "UI",
+      "description": "department of designing user interface",
+      "males": 5,
+      "females": 8,
+      "id": 1
+    },
+    {
+      "name": "UX department",
+      "description": "Works on the user experience of our product",
+      "males": 12,
+      "females": 9,
+      "id": 2
+    },
+    {
+      "name": "User Designing",
+      "description": "Designing",
+      "males": 9,
+      "females": 4,
+      "id": 3
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "employee1",
+      "password": "password0",
+      "role": "employee"
+    },
+    {
+      "id": 2,
+      "username": "employee2",
+      "password": "password0",
+      "role": "employee"
+    },
+    {
+      "id": 3,
+      "username": "employee3",
+      "password": "password0",
+      "role": "employee"
+    },
+    {
+      "id": 4,
+      "username": "admin1",
+      "password": "password0",
+      "role": "admin"
+    }
+  ],
+  "employee": [
+    {
+      "contact": "9898999811",
+      "email": "kartik2401@gmail.com",
+      "name": "kartike",
+      "department": "Development",
+      "status": "Inactive",
+      "due": "2024-01-11T18:30:00.000Z",
+      "id": 1
+    },
+    {
+      "name": "Vinay",
+      "status": "Active",
+      "department": "HR",
+      "email": "vinay@gmail.com",
+      "contact": "8876789989",
+      "due": "2017-02-08T18:30:00.000Z",
+      "id": 2
+    },
+    {
+      "name": "Wasim",
+      "status": "Active",
+      "department": "Development",
+      "email": "wasim12@gmail.com",
+      "contact": "9112312879",
+      "due": "2023-05-10T18:30:00.000Z",
+      "id": 3
+    },
+    {
+      "name": "Rohan",
+      "status": "Active",
+      "department": "Development",
+      "email": "aks@gmail.com",
+      "contact": "8989888900",
+      "due": "2023-10-04T18:30:00.000Z",
+      "id": 4
+    }
+  ]
+}

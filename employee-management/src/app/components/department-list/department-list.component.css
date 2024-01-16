@@ -1,0 +1,21 @@
+.body-wrapper{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 2%;
+}
+.department-heading{
+    text-align: center;
+    border-bottom: 1px solid #696969;
+    font-size: 18px;
+    padding: 12px 0px;
+}
+.hero-bg {
+    margin-top: 43px;
+    padding: 0;
+    background: url('../../../assets/hero.jpg');
+    background-position: center;
+    background-size: cover;
+    height: 42em;
+    position: relative;
+    width: 100%;
+}

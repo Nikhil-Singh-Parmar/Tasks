@@ -1,0 +1,29 @@
+.filter{
+    width: 300px;
+    /* margin: 0.3rem 8.8rem; */
+    margin-top: 1rem;
+}
+.emp-heading-wrapper{
+    display: flex;
+    border-bottom: 1px solid #696969;
+    justify-content: space-between;
+    padding: 0% 2%;
+}
+.emp-heading{
+    font-size: 22px;
+    padding-top: 35px;
+}
+.body-wrapper{
+    width: 90%;
+    padding-left: 5%;
+    margin: 0% 0%;
+}
+.hero-bg {
+    margin-top: 43px;
+    background: url('../../../assets/hero.jpg');
+    background-position: center;
+    background-size: cover;
+    height: 42em;
+    position: relative;
+    width: 100%;
+}

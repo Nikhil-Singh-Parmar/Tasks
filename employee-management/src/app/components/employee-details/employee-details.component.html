@@ -1,0 +1,33 @@
+<mat-toolbar class="navbar">
+  <span class="heading">Blaze HRM System</span>
+  <span class="example-spacer"></span>
+  <button mat-raised-button (click)="onLogout()">
+    Logout
+  </button>
+</mat-toolbar>
+<div class="hero-bg">
+<div *ngIf="userData" class="form-container">
+    <div class="username">Hello {{ userData.name }}, Welcome Back</div>
+    <div class="detail">Personal Details</div>
+    <div class="body">
+    <div class="itemd"><strong class="item-head">Department :</strong><span class="value"> {{ userData.department }}</span></div>
+    <p class="item"><strong class="item-head">Status :</strong><span class="value status-val"> {{ userData.status }}</span></p>
+  <span class="item">
+      <strong class="item-head">Email ID :</strong>
+      <span *ngIf="!isEditingEmail" class="value">{{ userData.email }}</span>
+      <input *ngIf="isEditingEmail" [(ngModel)]="editedEmail" class="value-input"/>
+    </span>
+    <button *ngIf="!isEditingEmail" (click)="editEmail()" class="item edit-btn" mat-raised-button>Edit Email</button>
+    <button *ngIf="isEditingEmail" (click)="saveEmail()" class="item save-btn" mat-raised-button>Save Email</button>
+    <br>
+    <span class="item">
+      <strong  class="item-head">Mobile Number :</strong>
+      <span *ngIf="!isEditingMobile" class="value">{{ userData.contact }}</span>
+      <input *ngIf="isEditingMobile" class="value-input" [(ngModel)]="editedMobileNumber" />
+    </span>
+    <button *ngIf="!isEditingMobile" (click)="editMobileNumber()" class="item edit-btn" mat-raised-button>Edit Mobile</button>
+    <button *ngIf="isEditingMobile" (click)="saveMobileNumber()" class="item save-btn" mat-raised-button>Save Mobile</button>
+    <p class="item"><strong class="item-head">Joining Date:</strong><span class="value"> {{ userData.due | date }}</span></p>
+    </div>
+  </div>
+</div>

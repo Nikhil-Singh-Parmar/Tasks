@@ -1,0 +1,43 @@
+.department-input{
+    width: 100%;
+}
+.hero-bg {
+    margin: 0;
+    padding: 0;
+    background: url('../../../assets/hero.jpg');
+    background-position: center;
+    background-size: cover;
+    height: 45em;
+    position: relative;
+    width: 100%;
+}
+.form-wrapper{
+    display: flex;
+}
+.heading{
+    font-size: 26px;
+}
+.gender{
+    margin: 0px 10px 0px 0px;
+}
+.department-body{
+    padding-top: 120px;
+}
+.department-form{
+    background-color: white;
+    width: 440px;
+    margin: 0px auto;
+    border: solid lightgray 1px;
+    border-radius: 2.5%;
+    box-shadow: 2px -2px rgb(0, 204, 255), -0.1em 0 0.4em gray;
+    padding: 45px 30px;
+}
+.btn{
+    width: 140px;
+    height: 45px;
+    font-size: 18px;
+}
+.btn-wrapper{
+    display: flex;
+    justify-content: space-between;
+}

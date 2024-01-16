@@ -1,0 +1,37 @@
+<div class="container hero-bg">
+    <div class="col1">
+        <div class="logo">
+            <!-- <img src="../../../assets/therewillbeeffects.jpg" alt="LOGO"> -->
+        </div>
+        <div class="logo-text">
+            <p>Smoothly Manage Your Employees with <span>Blaze HRM System</span></p>
+        </div>
+    </div>
+    <div class="col2">
+        <div class="text">
+            <h1>Sign In</h1>
+        </div>
+        <div class="form-container">
+            <h2 class="grey">Employee Management System</h2>
+            <h2 class="blue">Blaze HRM</h2>
+            <hr>
+            <form [formGroup]="loginForm">
+                <label for="username">Username</label>
+                <br>
+                <input type="text" id="username" placeholder="Enter your username" formControlName="username">
+                <br><br>
+                <label for="password">Password</label>
+                <br>
+                <input type="password" formControlName="password" placeholder="Enter your password"><br><br>
+                <label for="role">Role:</label>
+                <select id="role" formControlName="role" class="role">
+                  <option value="employee">Employee</option>
+                  <option value="admin">Admin</option>
+                </select>
+                <br><br>
+                <input class="btn" type="submit" (click)="login()" value="Sign In ">
+            </form>
+            <p class="btext">Don't have an account? <span>Contact Admin</span></p>
+        </div>
+    </div>
+</div>

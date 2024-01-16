@@ -1,0 +1,16 @@
+<mat-toolbar>
+    <mat-toolbar-row class="example-button-row navbar" >
+      <div class="heading">
+        Blaze HRM System
+      </div>
+      <button mat-raised-button routerLink="./employees">
+        Employees
+      </button>
+      <a mat-raised-button routerLink="./addEmployee" >Add Employee</a>
+      <a mat-raised-button routerLink="./addDepartment" >Add Department</a>
+      <a mat-raised-button routerLink="./departments" >View Departments</a>
+      <a mat-raised-button (click)="onLogout()">Logout</a>
+     
+    </mat-toolbar-row>
+</mat-toolbar>
+<router-outlet></router-outlet>

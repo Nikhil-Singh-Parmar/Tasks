@@ -1,0 +1,39 @@
+<div class="hero-bg">
+<div class="department-body">
+  <div class="department-form">
+    <div mat-dialog-title>
+      <h1 class="heading">
+          {{ editMode ? 'Edit Department Details' : 'Add New Department' }}
+      </h1>
+  </div>
+  <form [formGroup]="departmentForm" (ngSubmit)="onFormSubmit()" >
+  <div >
+      <mat-form-field appearance="outline" class="department-input">
+          <mat-label>Name</mat-label>
+          <input matInput type="text" placeholder="Enter Department Name" formControlName="name">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="department-input">
+          <mat-label>Description</mat-label>
+          <textarea matInput matTextareaAutosize placeholder="Enter Description of Department" formControlName="description"></textarea>
+        </mat-form-field>
+        <div class="form-wrapper">
+          <mat-form-field appearance="outline" class="department-input gender">
+              <mat-label>No of Males</mat-label>
+              <input matInput type="number" placeholder="Enter Number of Males" formControlName="males">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="department-input">
+              <mat-label>No of Females</mat-label>
+              <input matInput type="number" placeholder="Enter Number of Females" formControlName="females">
+            </mat-form-field>
+        </div>
+  
+  </div>
+
+  <div class="btn-wrapper">
+      <button mat-raised-button class="btn" type="button" (click)="onCancel()" color="warn">Cancel</button>
+      <button mat-raised-button class="btn" (click)="onFormSubmit" color="primary">{{ editMode ? 'Update' : 'Add' }}</button>
+  </div>
+  </form>
+  </div>
+</div>
+</div>

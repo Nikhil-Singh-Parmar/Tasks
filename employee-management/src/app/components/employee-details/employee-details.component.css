@@ -1,0 +1,82 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+.navbar{
+  padding: 10px 30px;
+  background-color: rgb(0, 204, 255); 
+}
+.heading{
+    font-size: 26px;
+}
+.username{
+    font-size: 34px;
+    text-align: center;
+}
+.item-head{
+    
+    margin: 0px 8px;
+}
+.value{
+    margin: 0px 16px;
+}
+.value-input{
+    margin: 0px 6px;
+    color: gray;
+}
+.edit-btn{
+    background-color: red;
+    color: white;
+}
+.save-btn{
+    color: white;
+    background-color: green;
+}
+.hero-bg {
+    margin-top: 43px;
+    padding: 0;
+    background: url('../../../assets/hero.jpg');
+    background-position: center;
+    background-size: cover;
+    height: 42em;
+    position: relative;
+    width: 100%;
+}
+.detail{
+    border-bottom: 1px solid #696969;
+    width: 450px;
+    font-size: 26px;
+    color: gray;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px auto;
+    padding-bottom: 20px;
+}
+.status{
+    margin: 22px 0px;
+}
+.form-container {
+    margin: 2% auto;
+    width: 550px;
+    border: solid lightgray 1px;
+    padding-left: 3em;
+    padding-right: 3em;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    border-radius: 2.5%;
+    box-shadow: 2px -2px rgb(0, 204, 255), -0.1em 0 0.4em gray;
+    background-color: white;
+}
+.item{
+    margin: 6px 0px;
+}
+.itemd{
+    margin: 12px 0px;
+    justify-content: space-between;
+}
+.body{
+    margin-left: 25px;
+    font-size: 18px;
+}
+.status-value{
+    padding-left: 45px;
+}

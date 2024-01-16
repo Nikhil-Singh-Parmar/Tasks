@@ -1,0 +1,40 @@
+.form-container{
+    display: flex;
+    flex-direction: column;
+}
+.heading{
+    font-size: 26px;
+}
+.employee-body{
+    padding-top: 43px;
+    margin: 0;
+    background: url('../../../assets/hero.jpg');
+    background-position: center;
+    background-size: cover;
+    height: 42em;
+    position: relative;
+    width: 100%;
+}
+.employee-form{
+    background-color: white;
+    width: 440px;
+    margin: 0px auto;
+    padding: 35px 30px;
+    border: solid lightgray 1px;
+    border-radius: 2.5%;
+    box-shadow: 2px -2px rgb(0, 204, 255), -0.1em 0 0.4em gray;
+}
+.btn{
+    width: 140px;
+    height: 45px;
+    font-size: 18px;
+}
+.btn-wrapper{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.input-wrapper{
+    display: flex;
+    justify-content: space-between;
+}
